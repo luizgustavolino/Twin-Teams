@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  
+  <!--
+  
+  Twin Teams, desenvolvido por tsubasa soft. durante a SP Jam 2012.
+  
+  Game design: Pedro Câmara
+  Programação: Luiz Gustavo Lino
+  Arte: Lumi Mae
+  Musica: Patricia de Carli
+  
+  Obrigado por jogar. 
+  Visite nosso blog: tsubasa.com.br
+  
+  -->
+  
+    <title>Twin Teams</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=NO"/>
+    <link rel="shortcut icon" href="http://tsubasa.com.br/blog/wp-content/themes/pixelpower/favicon.gif" />
+	<meta charset="utf-8">
+    <style>
+        
+        body, div, canvas, p{
+            padding: 0px;
+            margin: 0px;
+            -webkit-user-select: none;
+        }
+        
+        body{
+            width:100%;
+            height:100%;
+            overflow:hidden;
+            font-size: 0pt;
+            background-color: black;
+            background-image: url(img/web_twinteams_background.png);
+        }
+        
+        #viewport{
+            margin: 40px 0px 35px 0px;
+        }
+        
+    </style>
+    
+    <script type="text/javascript">
+        var game = {};
+        game.sf = 1;
+    </script>
+    
+
+    <script type="text/javascript" charset="utf-8" src="game/resources.js"></script>
+    <script type="text/javascript" charset="utf-8" src="game/balance.js"></script>
+    <script type="text/javascript" charset="utf-8" src="game/scenes/gameScene.js"></script>
+    <script type="text/javascript" charset="utf-8" src="game/scenes/tutorial.js"></script>
+    <script type="text/javascript" charset="utf-8" src="game/scenes/titleScene.js"></script>
+    <script type="text/javascript" charset="utf-8" src="game/scenes/gameSceneComponents/gridConnection.js"></script>
+    <script type="text/javascript" charset="utf-8" src="game/scenes/gameSceneComponents/hadouken.js"></script>
+    <script type="text/javascript" charset="utf-8" src="game/scenes/gameSceneComponents/witch.js"></script>
+    <script type="text/javascript" charset="utf-8" src="game/scenes/gameSceneComponents/kobolds.js"></script>
+    
+    <script type="text/javascript">
+    
+	function preventBehavior(e) {
+      e.preventDefault(); 
+    };
+    
+	document.addEventListener("touchmove", preventBehavior, false);
+	
+	function onBodyLoad(){
+        var isiPad 		= navigator.userAgent.match(/iPad/i) != null;
+        var isiPhone  	= navigator.userAgent.match(/iPhone/i) != null;
+        if(isiPad || isiPhone){
+            document.addEventListener("deviceready", onDeviceReady, false);
+        }else{
+            onDeviceReady();
+        }
+	}
+	
+	function onDeviceReady(){
+        game.resources.harvest();
+        game.engine.bootstrap();
+	}
+    
+    </script>
+    
+    <script type="text/javascript" charset="utf-8" src="game/engine.js"></script>
+    
+  </head>
+  <body onload="onBodyLoad()">
+      
+      <center>
+          <canvas id="viewport" width="320" height="480"></canvas>
+          <p><img src="img/web_twinteams_credits.png"/></p>
+      </center>
+      
+      <div style="display:none">
+          <img id="img_background" src="img/background.png"/>
+          
+          <img id="fire_idle" src="img/fire_idle.png"/>
+          <img id="stone_idle" src="img/stone_idle.png"/>
+          <img id="thunder_idle" src="img/thunder_idle.png"/>
+          
+          <img id="fire_cast" src="img/fire_cast.png"/>
+          <img id="stone_cast" src="img/stone_cast.png"/>
+          <img id="thunder_cast" src="img/thunder_cast.png"/>
+          
+          <img id="circle_selectionlight" src="img/circle_selectionlight.png"/>
+          <img id="circlelevel1" src="img/circlelevel1.png"/>
+          
+          <img id="enemy_neutral_dead" src="img/enemy_neutral_dead.png"/>
+          <img id="enemy_neutral_walk" src="img/enemy_neutral_walk.png"/>
+          <img id="enemy_neutral_hit" src="img/enemy_neutral_hit.png"/>
+          <img id="enemy_shield_fireweak" src="img/enemy_shield_fireweak.png"/>
+          <img id="enemy_shield_stoneweak" src="img/enemy_shield_stoneweak.png"/>
+          <img id="enemy_shield_thunderweak" src="img/enemy_shield_thunderweak.png"/>
+          
+          <img id="magic_fire_projectile" src="img/magic_fire_projectile.png"/>
+          <img id="magic_firestone_projectile" src="img/magic_firestone_projectile.png"/>
+          <img id="magic_stone_projectile" src="img/magic_stone_projectile.png"/>
+          <img id="magic_stonethunder_projectile" src="img/magic_stonethunder_projectile.png"/>
+          <img id="magic_thunder_projectile" src="img/magic_thunder_projectile.png"/>
+          <img id="magic_thunderfire_projectile" src="img/magic_thunderfire_projectile.png"/>
+          
+          <img id="gameover_bg" src="img/gameover_bg.png"/>
+          <img id="gameover_char" src="img/gameover_char.png"/>
+          <img id="logo" src="img/logo.png"/>
+          
+          <img id="button_play" src="img/button_play.png"/>
+          
+          <img id="health_full" src="img/health_full.png"/>
+          <img id="health_null" src="img/health_null.png"/>
+          
+          <img id="tutorial" src="img/tutorial.png"/>
+          
+      </div>
+      
+      <audio src="track/game.mp3" autoplay loop/>
+      
+      <script type="text/javascript">
+          var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-31766030-1']); _gaq.push(['_trackPageview']);
+          (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();
+        </script>
+      
+  </body>
+</html>
